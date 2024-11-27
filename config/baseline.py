@@ -17,6 +17,7 @@ site_configuration = {
                         "acpp_omp_library_only",
                         "acpp_omp_accelerated",
                         "acpp_llvm_cuda",
+                        "intel-oneapi",
                     ],
                     "prepare_cmds": [
                         "source /usr/local/Modules/init/profile.sh"
@@ -81,6 +82,24 @@ site_configuration = {
             },
             "modules": [
                 "reframe/NP-acpp-llvm-cuda",
+            ],
+        },
+        {
+            "name": "intel-oneapi",
+            "features": ["sycl"],
+            "cc": "icx",
+            "cxx": "icpx",
+            "features": [],
+            "extras": {
+                "cmake_configuration": [
+                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                ],
+                "NUM_BUILD_WORKERS": 12,
+                "OMP_NUM_THREADS": 2,
+                "NUM_MPI_RANKS": 12,
+            },
+            "modules": [
+                "reframe/NP-intel-oneapi",
             ],
         },
     ],

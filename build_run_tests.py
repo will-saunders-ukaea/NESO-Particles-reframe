@@ -3,18 +3,15 @@ import reframe.utility.sanity as sn
 import os
 
 
-@rfm.simple_test
 class NESOParticlesBuild(rfm.CompileOnlyRegressionTest):
-    def __init__(self):
-        self.descr = "Build and run tests."
-        self.valid_systems = ["NESOParticlesReframe"]
-        self.executable = "test/testNESOParticles"
-        self.sourcesdir = os.path.join(
-            os.path.dirname(__file__),
-            "..",
-            "NESO-Particles",
-        )
-        self.build_system = "CMake"
+    sourcesdir = os.path.join(
+        os.path.dirname(__file__),
+        "..",
+        "NESO-Particles",
+    )
+    build_system = "CMake"
+    executable = os.path.join("test", "testNESOParticles")
+    build_locally = False
 
     @run_before("compile")
     def prepare_build(self):
@@ -35,6 +32,7 @@ class NESOParticlesTest(rfm.RunOnlyRegressionTest):
     test_binaries = fixture(NESOParticlesBuild, scope="environment")
     valid_systems = ["NESOParticlesReframe"]
     valid_prog_environs = ["*"]
+    build_locally = False
 
     @run_before("run")
     def setup_omp_env(self):

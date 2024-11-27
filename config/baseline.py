@@ -5,6 +5,7 @@ site_configuration = {
             'descr': 'Runs NESO-Particles tests.',
             'hostnames': ['L0211-XU'],
             'modules_system': 'tmod4',
+            'max_local_jobs': 12,
             'partitions': [
                 {
                     'name': 'default',
@@ -15,6 +16,7 @@ site_configuration = {
                     'prepare_cmds': ["source /usr/local/Modules/init/profile.sh"]
                 }
             ]
+
         }
     ],
     "environments": [
@@ -27,8 +29,9 @@ site_configuration = {
             "extras": {
                 "cmake_configuration": [
                     "-DACPP_TARGETS=omp.library-only", 
-                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
-                ]
+                    "-DCMAKE_BUILD_TYPE=Debug"
+                ],
+                "num_build_workers" : 12
             },
             "modules": ["reframe/NP-acpp-llvm-cuda",]
         },

@@ -19,6 +19,8 @@ class NESOParticlesBuild(rfm.CompileOnlyRegressionTest):
         print("POLO")
         cmake_flags = self.current_environ.extras["cmake_configuration"]
         self.build_system.config_opts = cmake_flags
+        self.build_system.max_concurrency = self.current_environ.extras["num_build_workers"]
+        self.build_system.make_opts += ["testNESOParticles"]
 
     @sanity_function
     def validate_build(self):

@@ -28,7 +28,7 @@ class NESOParticlesBuild(rfm.CompileOnlyRegressionTest):
 
     @sanity_function
     def validate_build(self):
-        return True
+        return os.path.exists(self.executable)
 
 
 @rfm.simple_test

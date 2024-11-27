@@ -22,7 +22,7 @@ class NESOParticlesBuild(rfm.CompileOnlyRegressionTest):
         cmake_flags = self.current_environ.extras["cmake_configuration"]
         self.build_system.config_opts = cmake_flags
         self.build_system.max_concurrency = self.current_environ.extras[
-            "num_build_workers"
+            "NUM_BUILD_WORKERS"
         ]
         self.build_system.make_opts += ["testNESOParticles"]
 
@@ -43,10 +43,10 @@ class NESOParticlesTest(rfm.RunOnlyRegressionTest):
             self.test_binaries.stagedir, "test", "testNESOParticles"
         )
         procinfo = self.current_partition.processor
-        self.num_tasks = self.current_partition.max_jobs
+        self.num_tasks = self.current_environ.extras["NUM_MPI_RANKS"]
         self.num_cpus_per_task = procinfo.num_cores
         self.env_vars = {
-            "OMP_NUM_THREADS": 2,
+            "OMP_NUM_THREADS": self.current_environ.extras["OMP_NUM_THREADS"]
         }
 
     @sanity_function

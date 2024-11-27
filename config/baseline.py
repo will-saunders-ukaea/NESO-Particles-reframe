@@ -32,7 +32,9 @@ site_configuration = {
                     "-DACPP_TARGETS=omp.library-only",
                     "-DCMAKE_BUILD_TYPE=Debug",
                 ],
-                "num_build_workers": 12,
+                "NUM_BUILD_WORKERS": 12,
+                "OMP_NUM_THREADS": 2,
+                "NUM_MPI_RANKS": 12,
             },
             "modules": [
                 "reframe/NP-acpp-llvm-cuda",

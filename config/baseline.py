@@ -5,13 +5,13 @@ site_configuration = {
             'descr': 'Runs NESO-Particles tests.',
             'hostnames': ['L0211-XU'],
             'modules_system': 'tmod4',
-            'max_local_jobs': 12,
             'partitions': [
                 {
+                    "max_jobs": 12,
                     'name': 'default',
                     'descr': 'Example partition',
                     'scheduler': 'local',
-                    'launcher': 'local',
+                    'launcher': 'mpirun',
                     'environs': ['acpp_omp_library_only'],
                     'prepare_cmds': ["source /usr/local/Modules/init/profile.sh"]
                 }

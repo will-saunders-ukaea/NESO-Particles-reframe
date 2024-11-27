@@ -8,7 +8,6 @@ class NESOParticlesBuild(rfm.CompileOnlyRegressionTest):
     def __init__(self):
         self.descr = "Build and run tests."
         self.valid_systems = ["NESOParticlesReframe"]
-        self.valid_prog_environs = ["*"]
         self.executable = "test/testNESOParticles"
         self.sourcesdir = os.path.join(
             os.path.dirname(__file__),

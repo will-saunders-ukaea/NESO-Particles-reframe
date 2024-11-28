@@ -38,7 +38,7 @@ site_configuration = {
                     "-DACPP_TARGETS=omp.library-only",
                     "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
                 ],
-                "NUM_BUILD_WORKERS": 12,
+                "NUM_BUILD_WORKERS": 8,  # Uses much ram at 12.
                 "OMP_NUM_THREADS": 2,
                 "NUM_MPI_RANKS": 12,
             },

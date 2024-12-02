@@ -48,14 +48,14 @@ class NESOParticlesTest(rfm.RunOnlyRegressionTest):
         self.num_tasks = self.current_environ.extras["NUM_MPI_RANKS"]
         self.num_cpus_per_task = procinfo.num_cores
         self.env_vars = {
-            "OMP_NUM_THREADS": self.current_environ.extras["OMP_NUM_THREADS"],
             "NESO_PARTICLES_TEST_RESOURCES_DIR": os.path.join(
                 SOURCES_DIR, "test", "test_resources"
             ),
         }
+        self.env_vars.update(self.current_environ.extras["env_vars"])
 
     @sanity_function
     def validate_solution(self):
-        return sn.assert_not_found(
-            r"FAILED", self.stdout
-        ) and sn.assert_not_found(r"SKIPPED", self.stdout)
+        return sn.assert_not_found(r"FAILED", self.stdout) and sn.assert_not_found(
+            r"SKIPPED", self.stdout
+        )

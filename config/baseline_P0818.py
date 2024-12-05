@@ -20,6 +20,7 @@ site_configuration = {
                         "acpp_omp_library_only",
                         "acpp_omp_accelerated",
                         "acpp_llvm_cuda",
+                        "acpp_nvcxx_cuda",
                         "intel-oneapi",
                     ],
                     "prepare_cmds": [
@@ -92,6 +93,27 @@ site_configuration = {
             },
             "modules": [
                 "reframe/NP-acpp-llvm-cuda",
+            ],
+        },
+        {
+            "name": "acpp_nvcxx_cuda",
+            "features": ["sycl"],
+            "cc": "gcc",
+            "cxx": "g++",
+            "features": [],
+            "extras": {
+                "cmake_configuration": [
+                    "-DACPP_TARGETS=cuda-nvcxx",
+                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                ],
+                "NUM_BUILD_WORKERS": 12,
+                "NUM_MPI_RANKS": 8,
+                "env_vars": {
+                    "OMP_NUM_THREADS": 1,
+                },
+            },
+            "modules": [
+                "reframe/NP-acpp-nvcxx-cuda",
             ],
         },
         {

@@ -82,7 +82,7 @@ site_configuration = {
             "features": [],
             "extras": {
                 "cmake_configuration": [
-                    "-DACPP_TARGETS=cuda:sm_61",
+                    "-DACPP_TARGETS=cuda:sm_89",
                     "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
                 ],
                 "NUM_BUILD_WORKERS": 16,

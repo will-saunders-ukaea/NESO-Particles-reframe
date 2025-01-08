@@ -47,6 +47,7 @@ site_configuration = {
                 "NUM_MPI_RANKS": 8,
                 "env_vars": {
                     "OMP_NUM_THREADS": 2,
+                    "NESO_PARTICLES_DEVICE_AWARE_MPI": "ON",
                 },
             },
             "modules": [
@@ -68,6 +69,7 @@ site_configuration = {
                 "NUM_MPI_RANKS": 8,
                 "env_vars": {
                     "OMP_NUM_THREADS": 2,
+                    "NESO_PARTICLES_DEVICE_AWARE_MPI": "ON",
                 },
             },
             "modules": [
@@ -131,6 +133,7 @@ site_configuration = {
                 "env_vars": {
                     "OMP_NUM_THREADS": 2,
                     "I_MPI_PIN_DOMAIN": "2:scatter",
+                    "NESO_PARTICLES_DEVICE_AWARE_MPI": "ON",
                 },
             },
             "modules": [

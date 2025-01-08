@@ -86,7 +86,7 @@ site_configuration = {
                     "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
                 ],
                 "NUM_BUILD_WORKERS": 16,
-                "NUM_MPI_RANKS": 8,
+                "NUM_MPI_RANKS": 4,
                 "env_vars": {
                     "OMP_NUM_THREADS": 1,
                 },
@@ -107,7 +107,7 @@ site_configuration = {
                     "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
                 ],
                 "NUM_BUILD_WORKERS": 12,
-                "NUM_MPI_RANKS": 8,
+                "NUM_MPI_RANKS": 4,
                 "env_vars": {
                     "OMP_NUM_THREADS": 1,
                 },

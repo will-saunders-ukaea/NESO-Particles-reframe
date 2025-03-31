@@ -8,7 +8,7 @@ site_configuration = {
             ],
             "modules_system": "tmod4",
             "max_local_jobs": 2,
-            "stagedir": "/tmp/reframe",
+            "stagedir": "/dev/shm/reframe",
             "partitions": [
                 {
                     "max_jobs": 2,
@@ -21,11 +21,15 @@ site_configuration = {
                         "acpp_omp_accelerated",
                         "acpp_llvm_cuda",
                         "acpp_nvcxx_cuda",
+                        "acpp_generic_cuda",
                         "intel-oneapi",
                     ],
                     "prepare_cmds": [
                         "source /etc/profile.d/modules.sh",
                         "export CL_CONFIG_CPU_TARGET_ARCH=corei7-avx",
+                        "export ACPP_ADAPTIVITY_LEVEL=0",
+                        "export ACPP_APPDB_DIR=/dev/shm/acpp",
+                        "export ACPP_RT_NO_JIT_CACHE_POPULATION=1",
                     ],
                 }
             ],
@@ -116,6 +120,28 @@ site_configuration = {
             },
             "modules": [
                 "reframe/NP-acpp-nvcxx-cuda",
+            ],
+        },
+        {
+            "name": "acpp_generic_cuda",
+            "features": ["sycl"],
+            "cc": "gcc",
+            "cxx": "g++",
+            "features": [],
+            "extras": {
+                "cmake_configuration": [
+                    "-DACPP_TARGETS=generic",
+                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                ],
+                "NUM_BUILD_WORKERS": 16,
+                "NUM_MPI_RANKS": 4,
+                "env_vars": {
+                    "OMP_NUM_THREADS": 1,
+                    "ACPP_VISIBILITY_MASK": "cuda",
+                },
+            },
+            "modules": [
+                "reframe/NP-acpp-generic",
             ],
         },
         {

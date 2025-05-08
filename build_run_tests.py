@@ -5,7 +5,7 @@ import os
 SOURCES_DIR = os.path.join(
     os.path.dirname(__file__),
     "..",
-    "NESO-Particles",
+    "NESO-Particles-reframe-stage",
 )
 
 

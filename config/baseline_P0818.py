@@ -44,14 +44,16 @@ site_configuration = {
             "features": [],
             "extras": {
                 "cmake_configuration": [
+                    "-DNESO_PARTICLES_SINGLE_COMPILED_LOOP=ON",
                     "-DACPP_TARGETS=omp.library-only",
-                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                    "-DCMAKE_BUILD_TYPE=Release",
                 ],
                 "NUM_BUILD_WORKERS": 16,
                 "NUM_MPI_RANKS": 8,
                 "env_vars": {
                     "OMP_NUM_THREADS": 2,
                     "NESO_PARTICLES_DEVICE_AWARE_MPI": "ON",
+                    "NESO_PARTICLES_TEST_TMP_DIR": "/tmp/neso-particles-test/acpp_omp_library_only",
                 },
             },
             "modules": [
@@ -67,13 +69,14 @@ site_configuration = {
             "extras": {
                 "cmake_configuration": [
                     "-DACPP_TARGETS=omp.accelerated",
-                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                    "-DCMAKE_BUILD_TYPE=Release",
                 ],
                 "NUM_BUILD_WORKERS": 16,
                 "NUM_MPI_RANKS": 8,
                 "env_vars": {
                     "OMP_NUM_THREADS": 2,
                     "NESO_PARTICLES_DEVICE_AWARE_MPI": "ON",
+                    "NESO_PARTICLES_TEST_TMP_DIR": "/tmp/neso-particles-test/acpp_omp_accelerated",
                 },
             },
             "modules": [
@@ -89,12 +92,13 @@ site_configuration = {
             "extras": {
                 "cmake_configuration": [
                     "-DACPP_TARGETS=cuda:sm_89",
-                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                    "-DCMAKE_BUILD_TYPE=Release",
                 ],
                 "NUM_BUILD_WORKERS": 16,
                 "NUM_MPI_RANKS": 4,
                 "env_vars": {
                     "OMP_NUM_THREADS": 1,
+                    "NESO_PARTICLES_TEST_TMP_DIR": "/tmp/neso-particles-test/acpp_llvm_cuda",
                 },
             },
             "modules": [
@@ -110,12 +114,13 @@ site_configuration = {
             "extras": {
                 "cmake_configuration": [
                     "-DACPP_TARGETS=cuda-nvcxx",
-                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                    "-DCMAKE_BUILD_TYPE=Release",
                 ],
-                "NUM_BUILD_WORKERS": 12,
+                "NUM_BUILD_WORKERS": 16,
                 "NUM_MPI_RANKS": 4,
                 "env_vars": {
                     "OMP_NUM_THREADS": 1,
+                    "NESO_PARTICLES_TEST_TMP_DIR": "/tmp/neso-particles-test/acpp_nvcxx_cuda",
                 },
             },
             "modules": [
@@ -131,13 +136,14 @@ site_configuration = {
             "extras": {
                 "cmake_configuration": [
                     "-DACPP_TARGETS=generic",
-                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                    "-DCMAKE_BUILD_TYPE=Release",
                 ],
                 "NUM_BUILD_WORKERS": 16,
                 "NUM_MPI_RANKS": 4,
                 "env_vars": {
                     "OMP_NUM_THREADS": 1,
                     "ACPP_VISIBILITY_MASK": "cuda",
+                    "NESO_PARTICLES_TEST_TMP_DIR": "/tmp/neso-particles-test/acpp_generic_cuda",
                 },
             },
             "modules": [
@@ -152,7 +158,7 @@ site_configuration = {
             "features": [],
             "extras": {
                 "cmake_configuration": [
-                    "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                    "-DCMAKE_BUILD_TYPE=Release",
                 ],
                 "NUM_BUILD_WORKERS": 16,
                 "NUM_MPI_RANKS": 16,
@@ -160,6 +166,7 @@ site_configuration = {
                     "OMP_NUM_THREADS": 2,
                     "I_MPI_PIN_DOMAIN": "2:scatter",
                     "NESO_PARTICLES_DEVICE_AWARE_MPI": "ON",
+                    "NESO_PARTICLES_TEST_TMP_DIR": "/tmp/neso-particles-test/intel-oneapi",
                 },
             },
             "modules": [

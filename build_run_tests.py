@@ -58,4 +58,4 @@ class NESOParticlesTest(rfm.RunOnlyRegressionTest):
     def validate_solution(self):
         return sn.assert_not_found(r"FAILED", self.stdout) and sn.assert_not_found(
             r"SKIPPED", self.stdout
-        )
+        ) and sn.assert_not_found(r"Assertion error", self.stderr)

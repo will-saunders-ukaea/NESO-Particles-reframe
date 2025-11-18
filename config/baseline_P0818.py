@@ -26,7 +26,7 @@ site_configuration = {
                     ],
                     "prepare_cmds": [
                         "source /etc/profile.d/modules.sh",
-                        "export CL_CONFIG_CPU_TARGET_ARCH=corei7-avx",
+                        "export ACPP_PERSISTENT_RUNTIME=1",
                         "export ACPP_ADAPTIVITY_LEVEL=0",
                         "export ACPP_APPDB_DIR=/dev/shm/acpp",
                         "export ACPP_RT_NO_JIT_CACHE_POPULATION=1",
@@ -48,9 +48,10 @@ site_configuration = {
                     "-DACPP_TARGETS=omp.library-only",
                     "-DCMAKE_BUILD_TYPE=Release",
                 ],
-                "NUM_BUILD_WORKERS": 16,
+                "NUM_BUILD_WORKERS": 32,
                 "NUM_MPI_RANKS": 8,
                 "env_vars": {
+                    "NESO_PARTICLES_LOOP_LOCAL_SIZE": 1,
                     "OMP_NUM_THREADS": 2,
                     "NESO_PARTICLES_DEVICE_AWARE_MPI": "ON",
                     "NESO_PARTICLES_TEST_TMP_DIR": "/tmp/neso-particles-test/acpp_omp_library_only",
@@ -71,7 +72,7 @@ site_configuration = {
                     "-DACPP_TARGETS=omp.accelerated",
                     "-DCMAKE_BUILD_TYPE=Release",
                 ],
-                "NUM_BUILD_WORKERS": 16,
+                "NUM_BUILD_WORKERS": 32,
                 "NUM_MPI_RANKS": 8,
                 "env_vars": {
                     "OMP_NUM_THREADS": 2,
@@ -94,7 +95,7 @@ site_configuration = {
                     "-DACPP_TARGETS=cuda:sm_89",
                     "-DCMAKE_BUILD_TYPE=Release",
                 ],
-                "NUM_BUILD_WORKERS": 16,
+                "NUM_BUILD_WORKERS": 32,
                 "NUM_MPI_RANKS": 4,
                 "env_vars": {
                     "OMP_NUM_THREADS": 1,
@@ -116,7 +117,7 @@ site_configuration = {
                     "-DACPP_TARGETS=cuda-nvcxx",
                     "-DCMAKE_BUILD_TYPE=Release",
                 ],
-                "NUM_BUILD_WORKERS": 16,
+                "NUM_BUILD_WORKERS": 24,
                 "NUM_MPI_RANKS": 4,
                 "env_vars": {
                     "OMP_NUM_THREADS": 1,
@@ -138,7 +139,7 @@ site_configuration = {
                     "-DACPP_TARGETS=generic",
                     "-DCMAKE_BUILD_TYPE=Release",
                 ],
-                "NUM_BUILD_WORKERS": 16,
+                "NUM_BUILD_WORKERS": 32,
                 "NUM_MPI_RANKS": 4,
                 "env_vars": {
                     "OMP_NUM_THREADS": 1,
@@ -160,7 +161,7 @@ site_configuration = {
                 "cmake_configuration": [
                     "-DCMAKE_BUILD_TYPE=Release",
                 ],
-                "NUM_BUILD_WORKERS": 16,
+                "NUM_BUILD_WORKERS": 32,
                 "NUM_MPI_RANKS": 16,
                 "env_vars": {
                     "OMP_NUM_THREADS": 2,

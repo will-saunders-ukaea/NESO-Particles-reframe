@@ -19,6 +19,7 @@ site_configuration = {
                     "environs": [
                         "acpp_omp_library_only",
                         "acpp_omp_accelerated",
+                        "acpp_openmpi_omp_accelerated",
                         "acpp_llvm_cuda",
                         "acpp_nvcxx_cuda",
                         "acpp_generic_cuda",
@@ -82,6 +83,29 @@ site_configuration = {
             },
             "modules": [
                 "reframe/NP-acpp-llvm-cuda",
+            ],
+        },
+        {
+            "name": "acpp_openmpi_omp_accelerated",
+            "features": ["sycl"],
+            "cc": "gcc",
+            "cxx": "g++",
+            "features": [],
+            "extras": {
+                "cmake_configuration": [
+                    "-DACPP_TARGETS=omp.accelerated",
+                    "-DCMAKE_BUILD_TYPE=Release",
+                ],
+                "NUM_BUILD_WORKERS": 32,
+                "NUM_MPI_RANKS": 8,
+                "env_vars": {
+                    "OMP_NUM_THREADS": 2,
+                    "NESO_PARTICLES_DEVICE_AWARE_MPI": "ON",
+                    "NESO_PARTICLES_TEST_TMP_DIR": "/tmp/neso-particles-test/acpp_openmpi_omp_accelerated",
+                },
+            },
+            "modules": [
+                "reframe/NP-acpp-openmpi-llvm-cuda",
             ],
         },
         {

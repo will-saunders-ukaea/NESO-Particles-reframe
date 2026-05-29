@@ -24,7 +24,8 @@ class NESOParticlesBuild(rfm.CompileOnlyRegressionTest):
         self.build_system.max_concurrency = self.current_environ.extras[
             "NUM_BUILD_WORKERS"
         ]
-        self.build_system.make_opts += ["testNESOParticles"]
+        self.build_system.build_opts += ["testNESOParticles"]
+        self.build_system.config_opts = ['-G', 'Ninja']
 
     @sanity_function
     def validate_build(self):

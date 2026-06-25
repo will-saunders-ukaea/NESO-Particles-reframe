@@ -72,6 +72,7 @@ site_configuration = {
                 "cmake_configuration": [
                     "-DACPP_TARGETS=omp.accelerated",
                     "-DCMAKE_BUILD_TYPE=Release",
+                    "-DCMAKE_CXX_STANDARD=20"
                 ],
                 "NUM_BUILD_WORKERS": 32,
                 "NUM_MPI_RANKS": 8,

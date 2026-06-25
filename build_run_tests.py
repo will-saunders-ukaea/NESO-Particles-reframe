@@ -20,12 +20,14 @@ class NESOParticlesBuild(rfm.CompileOnlyRegressionTest):
         cmake_flags = self.current_environ.extras["cmake_configuration"] + [
             "-DNESO_PARTICLES_ENABLE_PETSC=ON",
         ]
+
+        self.build_system.config_opts = []
         self.build_system.config_opts = cmake_flags
         self.build_system.max_concurrency = self.current_environ.extras[
             "NUM_BUILD_WORKERS"
         ]
         self.build_system.build_opts += ["testNESOParticles"]
-        self.build_system.config_opts = ['-G', 'Ninja']
+        self.build_system.config_opts += ['-G', 'Ninja']
 
     @sanity_function
     def validate_build(self):

@@ -48,6 +48,7 @@ site_configuration = {
                     "-DNESO_PARTICLES_SINGLE_COMPILED_LOOP=ON",
                     "-DACPP_TARGETS=omp.library-only",
                     "-DCMAKE_BUILD_TYPE=Release",
+                    "-DCMAKE_CXX_STANDARD=20",
                 ],
                 "NUM_BUILD_WORKERS": 32,
                 "NUM_MPI_RANKS": 8,
@@ -72,7 +73,7 @@ site_configuration = {
                 "cmake_configuration": [
                     "-DACPP_TARGETS=omp.accelerated",
                     "-DCMAKE_BUILD_TYPE=Release",
-                    "-DCMAKE_CXX_STANDARD=20"
+                    "-DCMAKE_CXX_STANDARD=23",
                 ],
                 "NUM_BUILD_WORKERS": 32,
                 "NUM_MPI_RANKS": 8,
